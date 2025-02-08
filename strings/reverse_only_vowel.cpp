@@ -71,34 +71,5 @@ class Solution {
     }
 };
 
-int main() {
-  Solution solution;
 
-  std::string s1 = "hello";
-  std::string expected_output1 = "holle";
-  std::string actual_output1 = solution.reverseVowels(s1);
-  std::cout << "Test Case 1: " << (expected_output1 == actual_output1) << std::endl;
-
-  std::string s2 = "DesignGUrus";
-  std::string expected_output2 = "DusUgnGires";
-  std::string actual_output2 = solution.reverseVowels(s2);
-  std::cout << "Test Case 2: " << (expected_output2 == actual_output2) << std::endl;
-
-  std::string s3 = "AEIOU";
-  std::string expected_output3 = "UOIEA";
-  std::string actual_output3 = solution.reverseVowels(s3);
-  std::cout << "Test Case 3: " << (expected_output3 == actual_output3) << std::endl;
-
-  std::string s4 = "aA";
-  std::string expected_output4 = "Aa";
-  std::string actual_output4 = solution.reverseVowels(s4);
-  std::cout << "Test Case 4: " << (expected_output4 == actual_output4) << std::endl;
-
-  std::string s5 = "";
-  std::string expected_output5 = "";
-  std::string actual_output5 = solution.reverseVowels(s5);
-  std::cout << "Test Case 5: " << (expected_output5 == actual_output5) << std::endl;
-
-  return 0;
-}
 
