@@ -1,37 +1,26 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
 class Solution {
 public:
-    bool match_func(char a, char b) {
-        if ((a == '[' && b == ']') || (a == '{' && b == '}') ||
-            (a == '(' && b == ')')) {
-            return true;
-        } else {
-            return false;
-        }
-    }
     bool isValid(string s) {
-        // ToDo: Write Your Code Here.
-        int n = s.length();
-        int i = 0;
-        stack<int> st;
-
-        while (i < n) {
-            if (s[i] == '(' || s[i] == '{' || s[i] == '[') {
-                st.push(s[i]);
-                i++;
-            }
-
-            while (s[i] == ')' || s[i] == '}' || s[i] == ']') {
-                if (st.empty())
-                    return false;
-
-                if (!match_func(st.top(), s[i]))
-                    return false;
-                i++;
-                st.pop();
+        stack<char> st;
+        for (char c : s) {
+            // If it's an opening bracket, push to stack
+            if (c == '(' || c == '{' || c == '[') {
+                st.push(c);
+            } else {
+                // If stack is empty, it means no matching opening bracket
+                if (st.empty()) return false;
+                char top = st.top(); st.pop(); // Get the top element of the stack
+                // Check if the current closing bracket matches the top of the stack
+                if (c == ')' && top != '(') return false;
+                if (c == '}' && top != '{') return false;
+                if (c == ']' && top != '[') return false;
             }
         }
-        if (st.empty() == false)
-            return false;
-        return true;
+        // If stack is empty, all brackets were matched
+        return st.empty();
     }
 };
