@@ -1,3 +1,6 @@
+/*https://www.geeksforgeeks.org/find-the-row-with-maximum-number-1s/*/
+/*sorted row in the given problem*/
+/*if it's not sorted, traverse all the row */
 /*
 Start from the top-right cell(row = 0, col = N – 1) and store the ans = -1. If the value in the current cell is 1, 
 update ans with the current row and move left. 
