@@ -1,25 +1,21 @@
 class Solution {
 public:
-    int search(vector<int>& nums, int target) {
+    vector<int> plusOne(vector<int>& digits) {
+        vector<int>res;
         int l = 0;
-        int r = nums.size() - 1;
-        while (l <= r) {
-            int mid = (l + r) / 2;
-            if (nums[mid] == target)
-                return mid;
+        int r = digits.size()-1;
 
-            if (nums[l] <= nums[mid]) { // left half sorted
-                if (nums[l] <= target && nums[mid] > target)
-                    r = mid - 1;
-                else
-                    l = mid + 1;
+        while( l <= r) {
+            if(digits[r] == 9){
+                digits[r] = 0;
+                r--;
+                continue;
             } else {
-                if (nums[mid] < target && nums[r] >= target)
-                    l = mid + 1;
-                else
-                    r = mid - 1;
+                digits[r] = digits[r]+1;
+                return digits;
             }
         }
-        return -1;
+        digits.insert(digits.begin(), 1);
+        return digits;
     }
 };
