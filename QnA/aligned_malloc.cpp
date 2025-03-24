@@ -2,10 +2,13 @@ void* aligned_malloc(size_t required_bytes, size_t alignment) {
     void* p1; // original block
     void** p2; // aligned block
     int offset = alignment - 1 + sizeof(void*);
+    // Allocate extra memory to store the original pointer
     if ((p1 = (void*)malloc(required_bytes + offset)) == NULL) {
         return NULL;
     }
+    // Align the pointer
     p2 = (void**)(((size_t)(p1) + offset) & ~(alignment - 1));
+    // Store the original pointer before the aligned memory
     p2[-1] = p1;
     return p2;
 }
