@@ -21,3 +21,28 @@ class Solution {
         return cnt;
     }
 };
+
+
+/*
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int maxMeetings(std::vector<int>& start, std::vector<int>& end) {
+    std::vector<std::pair<int, int>> meetings;
+    for (size_t i = 0; i < start.size(); ++i) {
+        meetings.push_back({start[i], end[i]});
+    }
+
+    std::sort(meetings.begin(), meetings.end(), [](auto& a, auto& b) { return a.second < b.second; });
+
+    int count = 0, last_end = 0;
+    for (auto& meeting : meetings) {
+        if (meeting.first > last_end) {
+            ++count;
+            last_end = meeting.second;
+        }
+    }
+    return count;
+}
+*/
