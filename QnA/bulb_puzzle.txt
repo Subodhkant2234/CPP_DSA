@@ -1,0 +1,73 @@
+The Puzzle (Classic Version)
+
+You are in a room with 3 light switches, all currently off. Each switch controls one of 3 light bulbs in another room, but you don’t know which switch controls which bulb. You can only enter the other room once. How can you figure out which switch controls which bulb?
+
+Solution
+
+Turn on the first switch and leave it on for a few minutes.
+
+Turn off the first switch and immediately turn on the second switch.
+
+Go into the room with the bulbs.
+
+Now you can identify each bulb:
+
+The bulb that is on → controlled by the second switch (you left it on).
+
+The bulb that is off but warm → controlled by the first switch (was on for a while, then turned off).
+
+The bulb that is off and cold → controlled by the third switch (was never turned on).
+
+
+================================================================================================================================
+Puzzle Statement
+
+There are 100 light bulbs, all initially off, in a row.
+
+There are 100 people (or passes).
+
+The 1st person toggles every bulb (turns all bulbs on).
+
+The 2nd person toggles every 2nd bulb (2, 4, 6…).
+
+The 3rd person toggles every 3rd bulb (3, 6, 9…), and so on…
+
+After the 100th person, which bulbs are on and which are off?
+
+Solution
+
+The key insight:
+
+A bulb’s final state depends on how many times it was toggled.
+
+A bulb is toggled once for each factor/divisor it has.
+
+Example: Bulb 12 → toggled by 1, 2, 3, 4, 6, 12 → 6 toggles → ends up off (even number of toggles).
+
+Rule:
+
+If a bulb has an even number of factors, it ends off.
+
+If a bulb has an odd number of factors, it ends on.
+
+Which bulbs have an odd number of factors?
+
+Only perfect squares (1, 4, 9, 16, …, 100).
+
+That’s because factors usually come in pairs (e.g., 2 × 6 = 12), except when it’s a perfect square (e.g., 4 × 4 = 16).
+
+Answer: The bulbs that remain ON
+
+Bulbs numbered:
+1² = 1
+2² = 4
+3² = 9
+4² = 16
+5² = 25
+6² = 36
+7² = 49
+8² = 64
+9² = 81
+10² = 100
+
+✅ So bulbs 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 stay on. All others are off.
