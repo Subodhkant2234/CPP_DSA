@@ -38,3 +38,42 @@ public:
         return ans;
     }
 };
+
+
+/*
+class Solution {
+public:
+   string expandAroundCenter(const string &s, int left, int right) {
+    int n = s.size();
+    while (left >= 0 && right < n && s[left] == s[right]) {
+        left--;
+        right++;
+    }
+    // Return the substring from (left+1) to right - 1
+    return s.substr(left + 1, right - left - 1);
+    }
+
+string longestPalindrome(string s) {
+    if (s.empty()) return "";
+    string longest = "";
+    int n = s.length();
+    for (int i = 0; i < n; i++) {
+        // Check for odd length palindromes
+        string odd = expandAroundCenter(s, i, i);
+        
+        // Check for even length palindromes
+        string even = expandAroundCenter(s, i, i + 1);
+        
+        // Update longest palindrome
+        if (odd.length() > longest.length()) {
+            longest = odd;
+        }
+        if (even.length() > longest.length()) {
+            longest = even;
+        }
+    }
+    return longest;
+    }
+};
+
+*/
