@@ -1,3 +1,4 @@
+https://www.geeksforgeeks.org/dsa/meeting-rooms-check-if-a-person-can-attend-all-meetings/
 bool canAttendMeetings(vector<vector<int>>& intervals) {
     sort(intervals.begin(), intervals.end());
     
