@@ -1,3 +1,4 @@
+https://takeuforward.org/plus/dsa/greedy-algorithms/scheduling-and-interval-problems/n-meetings-in-one-room
 class Solution {
   public:
     // Function to find the maximum number of meetings that can
