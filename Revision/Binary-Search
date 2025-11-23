@@ -1,1 +1,64 @@
+1. Lower Bound:
+Approach: 
 
+    Start with two pointers: low at the start and high at the end of the array. Initialize ans to the size of the array.
+    Calculate the middle index, mid, using mid = (low + high) / 2. If arr[mid] is greater than or equal to x, update ans with mid as this could be the the required result and trim down the search space by eliminating the right half, as the smallest possible index is needed for lower bound, so start searching in the left half of the array. Otherwise, search the right half.
+    Repeat until the high pointer crosses the low pointer. The ans will hold the index of the lower bound if found, or the size of the array if no such index exists.
+
+    int lowerBound(vector<int>& nums, int x)
+    {
+        int low = 0, high = nums.size() - 1;
+        int ans = nums.size(); 
+
+        while (low <= high) {
+            int mid = (low + high) / 2; 
+
+            /* Check if mid element 
+               is a potential answer */
+            if (nums[mid] >= x) {
+                ans = mid; 
+
+                // Search left half
+                high = mid - 1; 
+            } 
+            else {
+                // Search right half
+                low = mid + 1; 
+            }
+        }
+        return ans; 
+    }
+
+2. Upper Bound
+Approach: 
+
+    Start with initializing 2 end points which mark the search range of the problem. Lets call them `low` and `high` where `low` pointer starts at the first index, and the `high` pointer points to the last index.
+    Along with this there shall be a need for `ans` variable initialized to the size of the array. This variable will store the index of the upper bound, or remain as the size of the array if no upper bound is found.
+    Calculate the middle index using simple formula of `mid=(low + high)/2` or `mid=(low+(high-low)/2)`. Compare if the middle index element is greater than the target. In that case update `ans` with `mid` (as that can be a potential answer) and search the left half for a smaller index that meets the condition.
+    If middle index element is less than or equal to the target, move to the right half to continue the search. This reduces the search space by half each time.
+    Repeat this process until the `low` pointer crosses the `high` pointer. At the end `ans` variable will then hold the index of the upper bound.
+
+       int upperBound(vector<int>& nums, int x)
+    {
+        int low = 0, high = nums.size() - 1;
+        int ans = nums.size();
+
+        // Binary search to find the upper bound
+        while (low <= high) {
+
+            // Calculate mid index
+            int mid = (low + high) / 2;
+
+            /*  Update ans if current 
+                element is greater than x   */
+            if (nums[mid] > x) {
+                ans = mid;
+                high = mid - 1;
+            } 
+            // Otherwise, move to the right half
+            else {
+                low = mid + 1;
+            }
+        }
+        return ans;
+    }
