@@ -65,3 +65,62 @@ Approach:
 
 3. Number of Occurrences:
     result = upperBound_index - lowerBound_Index
+
+4. Find peak element:
+Intuition: 
+
+Here, the idea is to use binary search algorithm to optimize the brute-force solution where linear serch was being used. 
+For each element (mid), we check if it is greater than its previous and next elements. If so, mid is identified as 
+a peak element. Alternatively, if mid is smaller than its previous element, a peak must exist on the left side, so the 
+right half is eliminated. Similarly, if mid is less than the next element, a peak must exist on the right side, so the 
+left half is eliminated. This approach trims down the search space in each iteration, thereby enhancing the time complexity.
+
+The logic correctly identifies the condition for a mountain peak (arr[mid-1] < arr[mid] > arr[mid+1]) and adjusts 
+the search boundaries accordingly.
+
+Approach: 
+
+    Edge cases:
+        If n == 1(n is size of the array): If the size of the array is one, then the only element present will the peak element. So, return its index.
+        If the current index is 0: While checking for 0th index, it will have only one adjacent element, so just check for the element at 1st index, as -1 index will be invalid index.
+        If the current index is (n-1): The last index will also have only one adjacent element as the nth index will be invalid(for 0 based indexing). So just check (n-2)th index.
+
+Initialize two pointers: low to 1 and high to n-2(n is the size of the array), as the 0th and (n-1)th index has already been dealt with in the edge cases. This will describe our search space.
+
+Intialize a while loop which will run till low is less than or equal to high. Now, inside a loop, calculate the value of ‘mid’ using the following formula: mid = (low+high) // 2 ( ‘//’ refers to integer division)
+Check if element at [mid] is the peak element, if yes, return the value of 'mid' as the peak element is found at index 'mid'.
+
+If element at [mid] greater than element at [mid-1], this means we are in the left half and eliminate it as the peak element appears on the right.
+
+Otherwise, we are in the right half and eliminate it as the peak element appears on the left. This case also handles the case for the index ‘mid’ being a common point of a decreasing and increasing sequence. It will consider the left peak and eliminate the right peak.
+
+At last if no peak element is found return -1 as an answer.
+
+ int findPeakElement(vector<int> &arr) {
+        // Size of array
+        int n = arr.size();
+        
+        // Edge cases:
+        if (n == 1) return 0;
+        if (arr[0] > arr[1]) return 0;
+        if (arr[n - 1] > arr[n - 2]) return n - 1;
+
+        int low = 1, high = n - 2;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            //If arr[mid] is the peak
+            if (arr[mid - 1] < arr[mid] && arr[mid] > arr[mid + 1])
+                return mid;
+
+            // If we are in the left
+            if (arr[mid] > arr[mid - 1]) low = mid + 1;
+
+            /* If we are in the right
+            Or, arr[mid] is a common point*/
+            else high = mid - 1;
+        }
+        /* Return -1 if no peak element
+        found (dummy return) */
+        return -1; 
+    }
