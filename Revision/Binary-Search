@@ -62,3 +62,6 @@ Approach:
         }
         return ans;
     }
+
+3. Number of Occurrences:
+    result = upperBound_index - lowerBound_Index
