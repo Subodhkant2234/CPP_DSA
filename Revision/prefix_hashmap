@@ -1,0 +1,54 @@
+Common problems that use mp[0] = -1
+Problem	Explanation
+Longest subarray with sum = K	Need correct length from index 0
+Longest subarray with sum = 0	Need to count full-array sums
+Contiguous Array (0s & 1s)	Prefix sum must detect full-prefix balance
+Longest subarray of equal 0s and 1s	Your problem
+
+
+
+When do we use: mp[0] = 1 (or 0 → 1 count)?
+This happens in a completely different type of problem:
+✔ Used in:
+Counting total number of subarrays that satisfy a condition.
+✔ Typical goal:
+Count how many subarrays have sum = K
+(not the longest one).
+✔ Why 1 ?
+Because:
+Before starting, prefix_sum = 0
+That counts as one occurrence of prefix_sum = 0
+Every time current prefix_sum - K = 0, we add this count.
+
+You are NOT computing lengths.
+You are computing how many times something happens.
+
+🔹 Problem types:
+
+Count number of subarrays with sum = K
+
+Count subarrays with sum divisible by M
+
+Count subarrays with XOR = K (variation)
+
+Count nice subarrays (# of odd numbers)
+
+Example:
+
+Count number of subarrays whose sum = 0.
+
+If prefix_sum becomes 0 at index 1, we want to count that as a subarray:
+
+mp[0] starts at 1, meaning prefix_sum 0 seen once before.
+
+
+
+
+Putting it all together
+Goal	Use	Why
+Longest subarray	mp[0] = -1	Need correct length from index 0
+Count of subarrays	mp[0] = 1	0-sum appears once before start → counting works
+
+Final one-line summary:
+Use mp[0] = -1 when finding the longest subarray (length problem).
+Use mp[0] = 1 when counting how many subarrays exist (frequency/count problem).
