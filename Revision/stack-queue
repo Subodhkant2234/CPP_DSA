@@ -1,0 +1,77 @@
+// Stack implementation using an array
+#include <bits/stdc++.h> 
+
+class Solution {
+    private:
+        int* stack;
+        int top;
+        int capacity;
+    
+    public:
+        // Constructor to initialize stack
+        Solution(int capacity) {
+            this->capacity = capacity;
+            stack = new int[capacity];
+            top = -1; // Stack is initially empty
+        }
+    
+        ~Solution() {
+            delete[] stack;
+        }
+    
+        // Push operation
+        void push(int value) {
+            if (top == capacity - 1) {
+                std::cout << "Stack Overflow! Cannot push " << value << std::endl;
+                return;
+            }
+            stack[++top] = value;
+            std::cout << value << " pushed to stack." << std::endl;
+        }
+    
+        // Pop operation
+        int pop() {
+            if (isEmpty()) {
+                std::cout << "Stack Underflow! No elements to pop." << std::endl;
+                return -1; // Return -1 to indicate error
+            }
+            return stack[top--];
+        }
+    
+        // Peek operation
+        int peek() {
+            if (isEmpty()) {
+                std::cout << "Stack is empty!" << std::endl;
+                return -1;
+            }
+            return stack[top];
+        }
+    
+        // Check if the stack is empty
+        bool isEmpty() {
+            return top == -1;
+        }
+};
+    
+Steps for Push Operation:
+    Check if the stack is full.
+    If not full, increment the top index.
+    Insert the new element at the top index.
+    The new element becomes the topmost element in the stack.
+
+Steps for Pop Operation:
+    Check if the stack is empty.
+    Retrieve the top element.
+    Remove the top element by decrementing the top index.
+    Return the removed element.
+
+Steps for Peek Operation:
+    Check if the stack is empty.
+    Return the topmost element without removing it
+
+Steps for IsEmpty Operation:
+    If the stack has no elements, return true.
+    Otherwise, return false.
+
+
+    
