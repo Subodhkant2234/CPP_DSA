@@ -74,4 +74,85 @@ Steps for IsEmpty Operation:
     Otherwise, return false.
 
 
+
+
+class Queue {
+private:
+    int frontIndex, rearIndex, size;
+    int* arr;
+
+public:
+    // Constructor
+    Queue(int capacity) {
+        size = capacity;
+        arr = new int[size];
+        frontIndex = rearIndex = -1;
+    }
+
+    // Destructor (MEMORY DEALLOCATION)
+    ~Queue() {
+        delete[] arr;
+        cout << "Memory freed\n";
+    }
+
+    bool isEmpty() {
+        return (frontIndex == -1);
+    }
+
+    bool isFull() {
+        return ((rearIndex + 1) % size == frontIndex);
+    }
+
+    void enqueue(int value) {
+        if (isFull()) {
+            cout << "Queue is Full!\n";
+            return;
+        }
+        if (isEmpty()) {
+            frontIndex = rearIndex = 0;
+        } else {
+            rearIndex = (rearIndex + 1) % size;
+        }
+        arr[rearIndex] = value;
+    }
+
+    int dequeue() {
+        if (isEmpty()) {
+            cout << "Queue is Empty!\n";
+            return -1;
+        }
+        int removed = arr[frontIndex];
+
+        if (frontIndex == rearIndex) {
+            frontIndex = rearIndex = -1;
+        } else {
+            frontIndex = (frontIndex + 1) % size;
+        }
+        return removed;
+    }
+
+    int front() {
+        if (isEmpty()) {
+            cout << "Queue is Empty!\n";
+            return -1;
+        }
+        return arr[frontIndex];
+    }
+
+    void display() {
+        if (isEmpty()) {
+            cout << "Queue is Empty!\n";
+            return;
+        }
+        cout << "Queue: ";
+        int i = frontIndex;
+        while (true) {
+            cout << arr[i] << " ";
+            if (i == rearIndex) break;
+            i = (i + 1) % size;
+        }
+        cout << endl;
+    }
+};
+
     
