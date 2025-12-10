@@ -57,3 +57,13 @@ int firstOne(vector<int>& arr) {
 
     return ans;
 }
+
+Important Things to Mention in Interview
+
+If asked at Qualcomm:
+
+✔ Cannot do n = arr.size() → array is infinite.
+✔ Use exponential search to avoid TLE.
+✔ Then binary search to find the first 1.
+✔ Time complexity = O(log k).
+✔ Works even if first 1 is at a very large index.
