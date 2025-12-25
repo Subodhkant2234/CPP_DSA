@@ -1,0 +1,30 @@
+#include <stdint.h>
+#include <stdio.h>
+
+int main() {
+    uint32_t reg = 0xABCD1234;
+
+    // Define field positions and widths
+    #define STATUS_POS 28
+    #define STATUS_WIDTH 4
+    #define COUNT_POS 16
+    #define COUNT_WIDTH 12
+    #define DATA_POS 0
+    #define DATA_WIDTH 16
+
+    // Masks
+    #define STATUS_MASK ((1U << STATUS_WIDTH) - 1)
+    #define COUNT_MASK ((1U << COUNT_WIDTH) - 1)
+    #define DATA_MASK ((1U << DATA_WIDTH) - 1)
+
+    // Extract fields
+    uint32_t status = (reg >> STATUS_POS) & STATUS_MASK;
+    uint32_t count  = (reg >> COUNT_POS) & COUNT_MASK;
+    uint32_t data   = (reg >> DATA_POS) & DATA_MASK;
+
+    printf("STATUS = 0x%X\n", status);
+    printf("COUNT  = 0x%X\n", count);
+    printf("DATA   = 0x%X\n", data);
+
+    return 0;
+}
