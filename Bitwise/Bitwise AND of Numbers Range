@@ -1,0 +1,29 @@
+
+
+Common Prefix Identification:
+
+    The function iteratively right-shifts both left and right until they become equal, identifying the common prefix of their binary representations.
+
+Counting Shifts:
+
+    It counts the number of right-shifts performed, storing the count in the variable cnt.
+
+Bitwise AND Calculation:
+
+    After finding the common prefix, it reconstructs the bitwise AND result by left-shifting the common prefix by cnt bits.
+
+
+
+class Solution {
+public:
+    int rangeBitwiseAnd(int left, int right) {
+        int cnt = 0;
+        while (left != right) {
+            left >>= 1;
+            right >>= 1;
+            cnt++;
+        }
+        return (left << cnt);
+    }
+};
+
