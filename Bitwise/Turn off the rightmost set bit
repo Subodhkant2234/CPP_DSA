@@ -1,0 +1,29 @@
+[Expected Approach 1] Using n & (n - 1) Trick (Brian Kernighan’s Method) - O(1) Time and O(1) Space
+
+    The idea is to unset the rightmost set (1) bit using bit manipulation.When we subtract 1 from a number, all bits from the rightmost set bit (including it) get flipped. By performing a bitwise AND of n and (n - 1), all bits remain unchanged except the rightmost set bit, which becomes 0.
+
+Algorithm:
+
+    Compute n - 1, which flips all bits from the rightmost set bit onward.
+    Perform bitwise AND operation: n & (n - 1).
+    This keeps all bits before the rightmost set bit unchanged.
+    It turns off (unsets) the rightmost set bit.
+    Return the resulting value.
+
+
+// Cpp program to unset the rightmost
+// set bit using Subtracting by One
+#include <bits/stdc++.h>
+using namespace std;
+
+// unsets the rightmost set bit 
+// of n and returns the result 
+int unsetLSB(int n)  { 
+    return (n & (n - 1)); 
+} 
+
+int main() { 
+    int n = 12; 
+    cout<<" Rightmost unsetBit: "<< unsetLSB(n); 
+    return 0; 
+}
