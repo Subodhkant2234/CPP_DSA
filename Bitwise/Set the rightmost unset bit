@@ -1,0 +1,33 @@
+ Algorithm
+
+    Use bitwise OR with n + 1:
+        result = n | (n + 1)
+        n + 1 flips the rightmost 0 in n to 1, and all bits to the right become 0.
+        Performing OR sets that bit to 1 while leaving other bits unchanged.
+
+
+[Expected Approach] Using n | (n + 1) Trick to Set Rightmost Unset Bit - O(1) Time and O(1) Space
+The idea is based on the property that n | (n + 1) sets the rightmost unset bit of a number. However, this also affects numbers where all bits are already set (like 2^k - 1). So, we first check if all bits are set; if yes, we return the number as it is. Otherwise, we apply n | (n + 1) to set the required bit.
+
+
+// C++ implementation to set the rightmost unset bit
+#include <bits/stdc++.h>
+using namespace std;
+
+int setBit(int n)
+{
+    // Special cases
+    if (n == 0)
+        return 1;
+
+    // Set the rightmost unset bit
+    return n | (n + 1);
+}
+
+// Driver program to test above
+int main()
+{
+    int n = 15;
+    cout << setBit(n);
+    return 0;
+}
