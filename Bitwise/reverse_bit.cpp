@@ -1,12 +1,11 @@
 class Solution {
-public:
+   public:
     uint32_t reverseBits(uint32_t n) {
         uint32_t rev = 0;
-        for (int position = 0; position < 32; position++) {
-            if (n & 1) {
-                rev |= 1 << (31 - position);
+        for (int i = 0; i < 32; i++) {
+            if (n & (1 << i)) {
+                rev = rev | (1 << (31 - i));
             }
-            n = n >> 1;
         }
         return rev;
     }
