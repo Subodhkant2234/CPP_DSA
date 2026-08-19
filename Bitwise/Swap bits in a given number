@@ -42,6 +42,29 @@ unsigned int swapNBits(unsigned int n, int pos1, int pos2, int num_bits)
     return n;
 }
 
+unsigned int swapNBits(unsigned int n, int pos1, int pos2, int num_bits)
+{
+    unsigned int mask;
+    unsigned int bits1, bits2;
+    unsigned int diff;
+
+    // Create mask for num_bits
+    mask = (1U << num_bits) - 1;
+
+    // Extract bits
+    bits1 = (n >> pos1) & mask;
+    bits2 = (n >> pos2) & mask;
+
+    // Find different bits
+    diff = bits1 ^ bits2;
+
+    // Swap the bits
+    n ^= diff << pos1;
+    n ^= diff << pos2;
+
+    return n;
+}
+
 ==========================================================
 this implementation is correct for swapping num_bits bits at two positions.
 
