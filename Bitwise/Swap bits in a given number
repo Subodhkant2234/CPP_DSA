@@ -117,3 +117,23 @@ After : 11100110
 
 So the 2-bit group at position 1 and the 2-bit group at position 5 are exchanged.
 
+
+=====================================================================================
+For interview understanding, first write it in 3 simple steps instead of combining everything:
+
+unsigned int diff;
+
+
+diff = bits1 ^ bits2;              // Find different bits
+
+
+n = n ^ (diff << pos1);            // Change bits at pos1
+n = n ^ (diff << pos2);            // Change bits at pos2
+
+Or even more clearly:
+
+diff = bits1 ^ bits2;
+
+
+bits1 = bits1 ^ diff;   // bits1 becomes bits2
+bits2 = bits2 ^ diff;   // bits2 becomes bits1
